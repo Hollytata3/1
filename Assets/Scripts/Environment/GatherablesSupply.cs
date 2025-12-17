@@ -1,0 +1,42 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using UnityEngine;
+
+namespace Xianxiao
+{
+    public class GatherablesSupply : MonoBehaviour, IGatherable
+    {
+        [field:SerializeField]public SupplySO Supply { get; private set; }
+
+        [field: SerializeField]public int Amount { get; private set; }
+
+        [field: SerializeField] public bool IsBusy { get; private set; }
+        private void Start()
+        {
+            Amount = Supply.MaxAmount;
+        }
+
+        public bool BeginGather()
+        {
+            if (IsBusy) { return false; }
+            IsBusy = true;
+            return true;
+        }
+
+        public int EndGather()
+        {
+            IsBusy = false;
+            int amountGathered= Math.Min(Supply.AmountPerGather, Amount);
+            Amount -= amountGathered;
+            if (Amount <= 0) { Destroy(gameObject); }
+            return amountGathered;
+        }
+        public void AbortGather()
+        {
+            IsBusy = false;
+        }
+    }
+}

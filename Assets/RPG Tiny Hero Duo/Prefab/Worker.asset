@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b08af6f1365ddaa48a285776a09cbcf6, type: 3}
+  m_Name: Worker
+  m_EditorClassIdentifier: Assembly-CSharp::Xianxiao.UnitSO
+  <Name>k__BackingField: worker
+  <Health>k__BackingField: 50
+  <Prefab>k__BackingField: {fileID: 8189980434977739222, guid: 2dfbb63c9cdf7504faf4ff26b0581598, type: 3}
+  <BuildTime>k__BackingField: 5
+  <Icon>k__BackingField: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  <Cost>k__BackingField: {fileID: 11400000, guid: f4b3b9377f3101b4d8406e7fe7f2d0f3, type: 2}
+  <AttackConfig>k__BackingField: {fileID: 0}

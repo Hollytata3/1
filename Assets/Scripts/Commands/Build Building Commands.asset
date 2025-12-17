@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c247c78c6909334e8353a4e9c2fba9c, type: 3}
+  m_Name: Build Building Commands
+  m_EditorClassIdentifier: Assembly-CSharp::Xianxiao.BuildBuildingCommand
+  <Name>k__BackingField: command
+  <Icon>k__BackingField: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
+  <Slot>k__BackingField: 0
+  <RequiresClickToActivate>k__BackingField: 1
+  <GhostPrefab>k__BackingField: {fileID: 3565233550401614684, guid: e5d12010212b7eb48b53599b9ae3863b, type: 3}
+  <building>k__BackingField: {fileID: 11400000, guid: f18000431fbf2d34da31aabe06de29c6, type: 2}
+  <Restrictions>k__BackingField:
+  - {fileID: 11400000, guid: c30a7ba74d576064c951ff1104af0604, type: 2}

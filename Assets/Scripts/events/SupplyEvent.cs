@@ -1,0 +1,20 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Xianxiao
+{
+    public struct SupplyEvent : IEvent
+    {
+        public int Amount { get; private set; }
+        public SupplySO Supply { get; private set; }
+
+        public SupplyEvent(int amount, SupplySO supply)
+        {
+            Amount = amount;
+            Supply = supply;
+        }
+    }
+}

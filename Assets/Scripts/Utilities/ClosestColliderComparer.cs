@@ -1,0 +1,26 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using UnityEngine;
+
+namespace Xianxiao
+{
+    public struct ClosestColliderComparer : IComparer<Collider>
+    {
+        private Vector3 targetPosition;
+
+        public ClosestColliderComparer(Vector3 position)
+        {
+            targetPosition = position;
+        }
+
+        public int Compare(Collider x, Collider y)
+        {
+            return (x.transform.position - targetPosition).sqrMagnitude
+                .CompareTo((y.transform.position - targetPosition).sqrMagnitude);
+        }
+    }
+}
+
