@@ -1,0 +1,16 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/UI%20toolkit/MenuStyle.uss?fileID=7433441132597879392&amp;guid=74e868922151c6b439be44ab24aeb3f2&amp;type=3#MenuStyle" />
+    <ui:VisualElement name="Background" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/UI/UI%20toolkit/VideoRT.renderTexture?fileID=8400000&amp;guid=f2cac54a334f3964e835645774bcaa78&amp;type=2#VideoRT&quot;);" />
+    <ui:VisualElement name="TitleContainer" style="flex-grow: 1; background-image: none;" />
+    <ui:Label text="随意按一个按钮" name="PressAnyKeyText" />
+    <ui:VisualElement name="MenuButtons" style="flex-grow: 1;">
+        <ui:Button text="开始游戏" name="start-button" />
+        <ui:Button text="设置" name="settings-button" />
+        <ui:Button text="退出游戏" name="quit-button" />
+        <ui:VisualElement name="SettingsPanel" style="flex-grow: 1;">
+            <ui:Label text="声音设置" />
+            <ui:Slider label="Slider" value="42" high-value="100" />
+            <ui:Button text="返回" name="back-button" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

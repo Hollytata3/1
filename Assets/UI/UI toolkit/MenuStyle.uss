@@ -1,0 +1,69 @@
+#Background {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 100%;
+    background-size: cover;          /* 新增：覆盖整个区域 */
+    background-position: 50% 50%;    /* 新增：居中 */
+    background-repeat: no-repeat;
+}
+#TitleContainer {
+    position: absolute;
+    top: 150px;              /* 调整这个数字，让标题上下来（越大越往下） */
+    left: 0;
+    right: 0;
+    justify-content: center;
+    align-items: center;     /* 新增：垂直居中 */
+}
+
+#TitleContainer > VisualElement {
+    width: 900px;            /* 调整宽度，让图片更大或更小 */
+    height: 400px;           /* 调整高度，保持图片比例 */
+    background-size: contain;   /* 图片完整显示，不拉伸变形 */
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#PressAnyKeyText {
+    position: absolute;
+    bottom: 100px;
+    left: 0;
+    right: 0;
+    font-size: 40px;
+    color: white;
+    -unity-text-align: middle-center;
+}
+
+#MenuButtons {
+    position: absolute;
+    bottom: 150px;
+    left: 0;
+    right: 0;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    display: none; /* 初始隐藏 */
+}
+
+Button {
+    width: 400px;
+    height: 80px;
+    font-size: 36px;
+    margin-bottom: 30px;
+    background-color: rgba(0,0,0,0.6);
+    color: white;
+}
+
+#SettingsPanel {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+Slider {
+    width: 500px;
+    height: 40px;
+    margin-top: 30px;
+}

@@ -1,60 +1,89 @@
 using UnityEngine;
-using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
-using UnityEngine.InputSystem;  // 新增这行：新输入系统
+using UnityEngine.UIElements;
+using UnityEngine.Video;
 
 public class MainMenuController : MonoBehaviour
 {
-    private VisualElement root;
-    private Label pressLabel;
-    private VisualElement mainButtons;
-    private bool hasPressed = false;
+    public RenderTexture videoTexture; // 在 Inspector 中拖入你的 VideoRT
+
+    private VisualElement background;
+    private VisualElement pressAnyKey;
+    private VisualElement menuButtons;
+    private VisualElement settingsPanel;
+    private Slider volumeSlider;
+
+    private bool hasEnteredMenu = false; // 新增：标记是否已经进入菜单，避免重复触发
 
     void Start()
     {
-        root = GetComponent<UIDocument>().rootVisualElement;
+        var root = GetComponent<UIDocument>().rootVisualElement;
 
-        pressLabel = root.Q<Label>("PressAnyKeyLabel");
-        mainButtons = root.Q<VisualElement>("MainButtons");
+        // 找到各个元素
+        background = root.Q<VisualElement>("Background");
+        pressAnyKey = root.Q<Label>("PressAnyKeyText");
+        menuButtons = root.Q<VisualElement>("MenuButtons");
+        settingsPanel = root.Q<VisualElement>("SettingsPanel");
+        volumeSlider = root.Q<Slider>();
 
-        root.Q<Button>("start-btn").clicked += StartGame;
-        root.Q<Button>("settings-btn").clicked += OpenSettings;
-        root.Q<Button>("quit-btn").clicked += QuitGame;
+        // 设置视频背景
+        if (videoTexture != null)
+        {
+            background.style.backgroundImage = Background.FromRenderTexture(videoTexture);
+        }
+        else
+        {
+            Debug.LogError("VideoTexture 未拖入！请在 Inspector 中拖入 RenderTexture");
+        }
+
+        // 默认音量 80%
+        volumeSlider.value = 0.8f;
+        AudioListener.volume = volumeSlider.value;
+
+        // 音量滑动条实时控制
+        volumeSlider.RegisterValueChangedCallback(evt =>
+        {
+            AudioListener.volume = evt.newValue;
+        });
+
+        // 按钮点击事件
+        root.Q<Button>("start-button").clicked += () =>
+        {
+            SceneManager.LoadScene("GameScene");
+        };
+
+        root.Q<Button>("settings-button").clicked += () =>
+        {
+            settingsPanel.style.display = DisplayStyle.Flex;
+            root.Q("start-button").style.display = DisplayStyle.None;
+            root.Q("settings-button").style.display = DisplayStyle.None;
+            root.Q("quit-button").style.display = DisplayStyle.None;
+        };
+
+        root.Q<Button>("quit-button").clicked += Application.Quit;
+
+        root.Q<Button>("back-button").clicked += () =>
+        {
+            settingsPanel.style.display = DisplayStyle.None;
+            root.Q("start-button").style.display = DisplayStyle.Flex;
+            root.Q("settings-button").style.display = DisplayStyle.Flex;
+            root.Q("quit-button").style.display = DisplayStyle.Flex;
+        };
+
+        // 注意：删除了原来的 RegisterCallback 事件
     }
 
     void Update()
     {
-        // 新输入系统检测：任意键或鼠标左键
-        if (!hasPressed &&
-            (Keyboard.current != null && Keyboard.current.anyKey.wasPressedThisFrame ||
-             Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame))
+        // 如果已经进入菜单，就不再检测
+        if (hasEnteredMenu) return;
+
+        // 检测任意键盘按键 或 鼠标任意按钮按下
+        if (Input.anyKeyDown)
         {
-            hasPressed = true;
-            ShowMainMenu();
+            pressAnyKey.style.display = DisplayStyle.None;
+            menuButtons.style.display = DisplayStyle.Flex;
+            hasEnteredMenu = true; // 只触发一次
         }
-    }
-
-    private void ShowMainMenu()
-    {
-        pressLabel.style.display = DisplayStyle.None;
-        mainButtons.style.display = DisplayStyle.Flex;
-    }
-
-    private void StartGame()
-    {
-        SceneManager.LoadScene("GameScene"); // 改成你的游戏场景名
-    }
-
-    private void OpenSettings()
-    {
-        Debug.Log("打开设置");
-    }
-
-    private void QuitGame()
-    {
-        Application.Quit();
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#endif
     }
 }
