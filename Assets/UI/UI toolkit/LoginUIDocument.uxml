@@ -1,0 +1,12 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/UI%20toolkit/LoginStyle.uss?fileID=7433441132597879392&amp;guid=c232fe19b8647b74c876f4b6acf995ad&amp;type=3#LoginStyle" />
+    <ui:VisualElement name="Background" style="flex-grow: 1; background-image: url(&apos;project://database/Assets/UI/UI%20toolkit/11.png?fileID=2800000&amp;guid=d0bfc9df17f481942bf137a5b2544e40&amp;type=3#11&apos;);" />
+    <ui:VisualElement name="LoginPanel" style="flex-grow: 1; display: flex;">
+        <ui:Label text="欢迎登录" />
+        <ui:Label text="账号" />
+        <ui:TextField label="账号" placeholder-text="请输入账号" name="username-field" style="height: 64px; width: 333px;" />
+        <ui:Label text="密码" />
+        <ui:TextField label="密码" placeholder-text="请输入密码" name="password-field" password="true" style="height: 67px; width: 330px;" />
+        <ui:Button text="登录" />
+    </ui:VisualElement>
+</ui:UXML>
