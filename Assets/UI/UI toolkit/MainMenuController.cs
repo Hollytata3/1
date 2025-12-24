@@ -49,7 +49,7 @@ public class MainMenuController : MonoBehaviour
         // 按钮点击事件
         root.Q<Button>("start-button").clicked += () =>
         {
-            SceneManager.LoadScene("GameScene");
+            SceneManager.LoadScene("LoginScene");
         };
 
         root.Q<Button>("settings-button").clicked += () =>
@@ -70,7 +70,6 @@ public class MainMenuController : MonoBehaviour
             root.Q("quit-button").style.display = DisplayStyle.Flex;
         };
 
-        // 注意：删除了原来的 RegisterCallback 事件
     }
 
     void Update()

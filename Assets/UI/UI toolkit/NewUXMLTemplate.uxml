@@ -1,16 +1,18 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/UI%20toolkit/MenuStyle.uss?fileID=7433441132597879392&amp;guid=74e868922151c6b439be44ab24aeb3f2&amp;type=3#MenuStyle" />
-    <ui:VisualElement name="Background" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/UI/UI%20toolkit/VideoRT.renderTexture?fileID=8400000&amp;guid=f2cac54a334f3964e835645774bcaa78&amp;type=2#VideoRT&quot;);" />
+    <ui:VisualElement name="Background" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/UI/UI%20toolkit/VideoRT.renderTexture?fileID=8400000&amp;guid=f2cac54a334f3964e835645774bcaa78&amp;type=2#VideoRT&quot;);">
+        <ui:VisualElement name="VisualElement" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/UI/UI%20toolkit/GameTitle1.png?fileID=2800000&amp;guid=012f6244b80f42449883c9a267523d3d&amp;type=3#GameTitle1&quot;); background-size: 900px 850px; top: -105px; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0; border-left-color: rgba(0, 0, 0, 0); border-right-color: rgba(0, 0, 0, 0); border-top-color: rgba(0, 0, 0, 0); border-bottom-color: rgba(0, 0, 0, 0);" />
+    </ui:VisualElement>
     <ui:VisualElement name="TitleContainer" style="flex-grow: 1; background-image: none;" />
-    <ui:Label text="随意按一个按钮" name="PressAnyKeyText" />
-    <ui:VisualElement name="MenuButtons" style="flex-grow: 1;">
-        <ui:Button text="开始游戏" name="start-button" />
-        <ui:Button text="设置" name="settings-button" />
-        <ui:Button text="退出游戏" name="quit-button" />
-        <ui:VisualElement name="SettingsPanel" style="flex-grow: 1;">
-            <ui:Label text="声音设置" />
-            <ui:Slider label="Slider" value="42" high-value="100" />
-            <ui:Button text="返回" name="back-button" />
+    <ui:Label text="随意按一个按钮" name="PressAnyKeyText" style="color: rgb(173, 155, 126); border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0;" />
+    <ui:VisualElement name="MenuButtons" style="flex-grow: 1; display: none; height: 0;">
+        <ui:Button text="开始游戏" name="start-button" style="background-image: url(&quot;project://database/Assets/UI/UI%20toolkit/Special_button_middle_red.png?fileID=2800000&amp;guid=8e9586e2490c9fb4789c63822939482c&amp;type=3#Special_button_middle_red&quot;); background-size: 130% 115%; color: rgb(236, 226, 201); border-left-color: rgba(149, 149, 149, 0); border-right-color: rgba(149, 149, 149, 0); border-top-color: rgba(149, 149, 149, 0); border-bottom-color: rgba(149, 149, 149, 0);" />
+        <ui:Button text="设置" name="settings-button" style="background-image: url(&quot;project://database/Assets/UI/UI%20toolkit/Special_button_middle_red.png?fileID=2800000&amp;guid=8e9586e2490c9fb4789c63822939482c&amp;type=3#Special_button_middle_red&quot;); background-size: 130% 115%; color: rgb(236, 226, 201); border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0;" />
+        <ui:Button text="退出游戏" name="quit-button" style="background-image: url(&quot;project://database/Assets/UI/UI%20toolkit/Special_button_middle_red.png?fileID=2800000&amp;guid=8e9586e2490c9fb4789c63822939482c&amp;type=3#Special_button_middle_red&quot;); background-size: 130% 115%; color: rgb(235, 224, 199); border-left-color: rgba(149, 149, 149, 0); border-right-color: rgba(149, 149, 149, 0); border-top-color: rgba(149, 149, 149, 0); border-bottom-color: rgba(149, 149, 149, 0);" />
+        <ui:VisualElement name="SettingsPanel" style="flex-grow: 1; display: none; top: -68px;">
+            <ui:Label text="设置" style="-unity-font-style: bold; font-size: 50px; color: rgb(190, 173, 145); top: -17px;" />
+            <ui:Slider label="声音" value="42" high-value="100" style="font-size: 46px; color: rgb(190, 173, 145); height: 77px;" />
+            <ui:Button text="返回" name="back-button" style="background-image: url(&quot;project://database/Assets/UI/UI%20toolkit/Special_button_middle_red.png?fileID=2800000&amp;guid=8e9586e2490c9fb4789c63822939482c&amp;type=3#Special_button_middle_red&quot;); color: rgb(190, 173, 145); background-size: 130% 115%; border-left-color: rgba(149, 149, 149, 0); border-right-color: rgba(149, 149, 149, 0); border-top-color: rgba(149, 149, 149, 0); border-bottom-color: rgba(149, 149, 149, 0);" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

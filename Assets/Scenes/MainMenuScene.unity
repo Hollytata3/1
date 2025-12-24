@@ -294,7 +294,7 @@ VideoPlayer:
   m_DataSource: 0
   m_TimeUpdateMode: 2
   m_PlaybackSpeed: 1
-  m_AudioOutputMode: 2
+  m_AudioOutputMode: 1
   m_TargetAudioSources:
   - {fileID: 0}
   m_DirectAudioVolumes:
@@ -393,7 +393,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainMenuController
   videoTexture: {fileID: 8400000, guid: f2cac54a334f3964e835645774bcaa78, type: 2}
-  titleImage: {fileID: 2800000, guid: 012f6244b80f42449883c9a267523d3d, type: 3}
 --- !u!1 &1051897063
 GameObject:
   m_ObjectHideFlags: 0
