@@ -18,4 +18,5 @@ MonoBehaviour:
   <BuildTime>k__BackingField: 10
   <Icon>k__BackingField: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   <Cost>k__BackingField: {fileID: 11400000, guid: 45a1df85fba5f99428b0d5efa25169a6, type: 2}
+  <SightConfig>k__BackingField: {fileID: 11400000, guid: dfed2c06974d3754f9f24b703442f9a0, type: 2}
   <PlacementMaterial>k__BackingField: {fileID: 2100000, guid: 45fdc96ce50a7914d9946f8399f33700, type: 2}

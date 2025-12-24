@@ -18,6 +18,7 @@ namespace Xianxiao
         [field: SerializeField] public Owner Owner { get; set; }
         [field: SerializeField] public BaseCommand[] AvailableCommands { get; private set; }
         [SerializeField] private DecalProjector decalProjector;
+        [SerializeField] protected Transform VisionTransform;
         [field: SerializeField] public AbstractUnitSO UnitSO { get; private set; }
         public delegate void HealthUpdatedEvent(AbstractCommandable commandable, int lastHealth, int newHealth);
         public event HealthUpdatedEvent OnHealthUpdated;
