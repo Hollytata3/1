@@ -1,4 +1,6 @@
-﻿namespace Xianxiao
+﻿using System;
+
+namespace Xianxiao
 {
     public static class Bus<T>where T : IEvent
     {

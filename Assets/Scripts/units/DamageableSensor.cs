@@ -8,12 +8,14 @@ namespace Xianxiao
         {
             public List<IDamageable> Damageables => damageables.ToList();
             [field: SerializeField] public Owner Owner { get; set; }
+        [field: SerializeField] private float SightRange { get; set; } = 10f; //  ”“∞∑∂Œß
 
-            public delegate void UnitDetectionEvent(IDamageable damageable);
+        public delegate void UnitDetectionEvent(IDamageable damageable);
             public event UnitDetectionEvent OnUnitEnter;
             public event UnitDetectionEvent OnUnitExit;
             private new SphereCollider collider;
-            private HashSet<IDamageable> damageables = new();
+            private HashSet<IDamageable> damageables = new HashSet<IDamageable>();
+
 
         private void Awake()
         {

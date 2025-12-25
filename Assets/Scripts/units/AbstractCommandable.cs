@@ -16,6 +16,7 @@ namespace Xianxiao
         [field: SerializeField] public int MaxHealth { get; private set; }
         public Transform Transform => transform;
         [field: SerializeField] public Owner Owner { get; set; }
+        [field: SerializeField] public bool IsVisible { get; private set; } = true;
         [field: SerializeField] public BaseCommand[] AvailableCommands { get; private set; }
         [SerializeField] private DecalProjector decalProjector;
         [SerializeField] protected Transform VisionTransform;
@@ -23,9 +24,25 @@ namespace Xianxiao
         public delegate void HealthUpdatedEvent(AbstractCommandable commandable, int lastHealth, int newHealth);
         public event HealthUpdatedEvent OnHealthUpdated;
         private BaseCommand[] initialCommands;
+        private Renderer[] renderers = Array.Empty<Renderer>();
+        private ParticleSystem[] particleSystems = Array.Empty<ParticleSystem>();
+
+        protected virtual void Awake()
+        {
+            renderers = GetComponentsInChildren<Renderer>();
+            particleSystems = GetComponentsInChildren<ParticleSystem>();
+
+        }
 
         protected virtual void Start()
         {
+            if (UnitSO.SightConfig != null && VisionTransform != null)
+            {
+                float size = UnitSO.SightConfig.SightRadius * 2;
+                VisionTransform.localScale = new Vector3(size, size, size);
+                VisionTransform.gameObject.SetActive(Owner == Owner.Player1);
+            }
+
             CurrentHealth = UnitSO.Health;
             MaxHealth = UnitSO.Health;
             initialCommands = AvailableCommands;
@@ -85,6 +102,48 @@ namespace Xianxiao
             CurrentHealth = Mathf.Clamp(CurrentHealth + amount, 0, MaxHealth);
             OnHealthUpdated?.Invoke(this, lastHealth, CurrentHealth);
         }
+        public void SetVisible(bool isVisible)
+        {
+            if (isVisible == IsVisible) return;
+
+            IsVisible = isVisible;
+
+            if (IsVisible)
+            {
+                OnGainVisibility();
+            }
+            else
+            {
+                OnLoseVisibility();
+            }
+        }
+
+        private void OnGainVisibility()
+        {
+            foreach (Renderer renderer in renderers)
+            {
+                renderer.enabled = true;
+            }
+
+            foreach (ParticleSystem particleSystem in particleSystems)
+            {
+                particleSystem.gameObject.SetActive(true);
+            }
+        }
+
+        private void OnLoseVisibility()
+        {
+            foreach (Renderer renderer in renderers)
+            {
+                renderer.enabled = false;
+            }
+
+            foreach (ParticleSystem particleSystem in particleSystems)
+            {
+                particleSystem.gameObject.SetActive(false);
+            }
+        }
+
     }
 }
 
