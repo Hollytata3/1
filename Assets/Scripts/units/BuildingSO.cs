@@ -11,6 +11,9 @@ namespace Xianxiao
     public class BuildingSO:AbstractUnitSO
     {
         [field: SerializeField] public Material PlacementMaterial { get; private set; }
+        [field: SerializeField] public float HealRange { get; private set; } = 10f;
+        [field: SerializeField] public float HealAmount { get; private set; } = 5f;
+        [field: SerializeField] public float HealInterval { get; private set; } = 2f;
     }
 
 }
