@@ -1,0 +1,12 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/UI%20toolkit/LoginUI.uss?fileID=7433441132597879392&amp;guid=0390921fbd87117449559aa897968472&amp;type=3#LoginUI" />
+    <ui:VisualElement name="background" style="background-image: url(&quot;project://database/Assets/UI/UI%20toolkit/Castle.png?fileID=2800000&amp;guid=32e3df5b39f43c047803801cc43b398c&amp;type=3#Castle&quot;); top: -1px;">
+        <ui:VisualElement name="login-panel">
+            <ui:Label text="登录" />
+            <ui:TextField name="username-field" placeholder-text="账号" />
+            <ui:TextField name="password-field" type="Password" placeholder-text="密码" />
+            <ui:Button name="login-button" text="登录" />
+            <ui:Label name="error-label" text="账号或密码错误" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
