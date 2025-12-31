@@ -5,55 +5,56 @@ public class HealAlliesInSight : MonoBehaviour
 {
     [SerializeField] private int healAmount = 10;  // 每次回血量
     [SerializeField] private float healInterval = 2f;  // 回血间隔时间
-    [SerializeField] private float sightRadius = 10f;  // 检测友军的视野范围
+    [SerializeField] private float sightRadius = 10f;  // 检测范围
+    [SerializeField] private int damageAmount = 10;  // 对敌军伤害量
 
-    private float nextHealTime;
-    private Collider[] allyColliders = new Collider[50];  // 存储检测到的友军碰撞体
-    private int foundAlliesCount;  // 检测到的友军数量
+    private float nextActionTime;  // 下次行动时间
+    private Collider[] detectedUnits = new Collider[50];  // 存储检测到的单位
+    private int detectedUnitsCount;  // 检测到的单位数量
     private AbstractCommandable selfCommandable;  // 自身的 AbstractCommandable 组件
 
     private void Awake()
     {
-        // 获取自身的 AbstractCommandable 组件
         selfCommandable = GetComponent<AbstractCommandable>();
     }
 
     private void Update()
     {
-        if (Time.time >= nextHealTime)
+        if (Time.time >= nextActionTime)
         {
-            HealNearbyAllies();
-            nextHealTime = Time.time + healInterval;
+            ProcessNearbyUnits();
+            nextActionTime = Time.time + healInterval;
         }
     }
 
-    private void HealNearbyAllies()
+    private void ProcessNearbyUnits()
     {
-        // 检测范围内的友军
-        foundAlliesCount = Physics.OverlapSphereNonAlloc(
+        // 检测范围内的所有单位
+        detectedUnitsCount = Physics.OverlapSphereNonAlloc(
             transform.position, 
             sightRadius, 
-            allyColliders,
+            detectedUnits,
             LayerMask.GetMask("Units")
         );
 
-        for (int i = 0; i < foundAlliesCount; i++)
+        for (int i = 0; i < detectedUnitsCount; i++)
         {
-            AbstractCommandable ally = allyColliders[i].GetComponent<AbstractCommandable>();
+            AbstractCommandable unit = detectedUnits[i].GetComponent<AbstractCommandable>();
             
-            // 确保是友军且不是自己
-            if (ally != null && ally.Owner == selfCommandable.Owner && ally != selfCommandable)
+            if (unit == null || unit == selfCommandable) continue;
+
+            if (unit.Owner == selfCommandable.Owner)
             {
-                ally.Heal(healAmount);
+                // 友军回血
+                unit.Heal(healAmount);
+            }
+            else
+            {
+                // 敌军造成伤害
+                unit.TakeDamage(damageAmount);
             }
         }
     }
-
-    // 在Scene视图中显示视野范围（可选）
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, sightRadius);
-    }
 }
+
 
