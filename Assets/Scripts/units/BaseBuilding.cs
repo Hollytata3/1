@@ -104,7 +104,6 @@ namespace Xianxiao
                 {
                     commandable.Owner = Owner;
                 }
-
                 buildingQueue.RemoveAt(0);
             }
 
